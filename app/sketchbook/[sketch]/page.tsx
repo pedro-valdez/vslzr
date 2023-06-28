@@ -11,9 +11,10 @@ export default async function SketchPage({ params: { sketch } }: SketchPageProps
 
 	return (
 		<main>
-			<div className="prose mx-auto">
-				<h1 className="capitalize">{ sketch }</h1>
+			<div className="aspect-square">
 				<DynamicSketch name={sketch}/>
+			</div>
+			<div className="prose mx-auto">
 				<Article />
 			</div>
 		</main>

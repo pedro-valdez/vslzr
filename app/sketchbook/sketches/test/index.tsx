@@ -9,7 +9,8 @@ export default function TestSketch() {
 		<Sketch
 			setup={(p5, canvasParentRef) => {
 				ref = canvasParentRef
-				p5.createCanvas(300, 300).parent(ref)
+				ref.classList.add("w-full", "h-full")
+				p5.createCanvas(ref.clientWidth, ref.clientHeight).parent(ref)
 				p5.background(0)
 				p5.stroke(255)
 			}}
@@ -21,6 +22,11 @@ export default function TestSketch() {
 					p5.mouseX,
 					p5.mouseY,
 				)
+			}}
+
+			windowResized={p5 => {
+				p5.resizeCanvas(ref.clientWidth, ref.clientHeight)
+				p5.background(0)
 			}}
 		/>
 	)
