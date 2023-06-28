@@ -11,11 +11,13 @@ export default async function SketchPage({ params: { sketch } }: SketchPageProps
 
 	return (
 		<main>
-			<div className="aspect-square">
-				<DynamicSketch name={sketch}/>
-			</div>
-			<div className="prose mx-auto">
-				<Article />
+			<div className="py-8">
+				<div className="aspect-square mb-8 mx-auto max-w-prose lg:aspect-video lg:max-w-screen-xl">
+					<DynamicSketch name={sketch}/>
+				</div>
+				<div className="prose mx-auto px-4">
+					<Article />
+				</div>
 			</div>
 		</main>
 	)
