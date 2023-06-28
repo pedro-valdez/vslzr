@@ -1,3 +1,5 @@
+import DynamicSketch from "./DynamicSketch"
+
 type SketchPageProps = {
 	params: {
 		sketch: string,
@@ -7,6 +9,7 @@ type SketchPageProps = {
 export default function SketchPage({ params: { sketch } }: SketchPageProps) {
 	return (
 		<main>
+			<DynamicSketch name={sketch}/>
 			{ sketch }
 		</main>
 	)
