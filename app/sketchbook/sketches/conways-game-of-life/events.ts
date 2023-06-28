@@ -10,14 +10,17 @@ const isMouseInCanvas = (p5: p5Types) => {
 	return isMouseInCanvas
 }
 
-export const keyPressed = (p5: p5Types) => {
+export const keyPressed = (p5: p5Types, event: any) => {
 	const N_KEY = 78
 	const isNKey = p5.keyCode === N_KEY
 	if (isNKey) { game.cycle() }
 
 	const SPACEBAR = 32
 	const isSpace = p5.keyCode === SPACEBAR
-	if (isSpace) { world.isCycling = !world.isCycling }
+	if (isSpace) { 
+		event.preventDefault()
+		world.isCycling = !world.isCycling 
+	}
 
 	const R_KEY = 82
 	const isRKey = p5.keyCode === R_KEY
