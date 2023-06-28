@@ -6,11 +6,16 @@ type SketchPageProps = {
 	},
 }
 
-export default function SketchPage({ params: { sketch } }: SketchPageProps) {
+export default async function SketchPage({ params: { sketch } }: SketchPageProps) {
+	const Article = await import(`../sketches/${sketch}/article.mdx`).then(mod => mod.default)
+
 	return (
 		<main>
-			<DynamicSketch name={sketch}/>
-			{ sketch }
+			<div className="prose mx-auto">
+				<h1 className="capitalize">{ sketch }</h1>
+				<DynamicSketch name={sketch}/>
+				<Article />
+			</div>
 		</main>
 	)
 }
