@@ -55,6 +55,7 @@ export default function MonteCarlosPiApproximationSketch() {
 
 			windowResized={p5 => {
 				p5.resizeCanvas(ref.clientWidth, ref.clientHeight)
+				p5.background(0)
 				side = p5.height * 0.8
 				halfSide = side / 2
 				center.x = p5.width / 2
