@@ -7,8 +7,10 @@ export default function TerrainSketch() {
 	const resonance = 0.02
 	const rows = 45
 	const cols = 80
-	let sx: number
-	let sy: number
+	const spacing = {
+		x: 0,
+		y: 0,
+	}
 
 	return (
 		<Sketch
@@ -20,21 +22,22 @@ export default function TerrainSketch() {
 				p5.stroke(255)
 				p5.strokeWeight(4)
 
-				sx = p5.width / (cols + 1)
-				sy = p5.height / (rows + 1)
+				spacing.x = p5.width / (cols + 1)
+				spacing.y = p5.height / (rows + 1)
 			}}
 
 			draw={p5 => {
 				p5.background(0)
 				for (let row = 0; row < rows; row++) {
 					for (let col = 0; col < cols; col++) {
-						const noise = p5.map(p5.noise(
+						const noise = p5.noise(
 							row * resonance,
 							col * resonance,
 							p5.frameCount / 20 * resonance,
-						), 0, 1, -1, 1)
-						const x = sx * (col + noise * sx)
-						const y = sy * (row + noise * sy)
+						)
+						const scale = p5.map(noise, 0, 1, -1, 1)
+						const x = spacing.x * (col + scale * spacing.x)
+						const y = spacing.y * (row + scale * spacing.y)
 						p5.point(x, y)
 					}
 				}
@@ -43,6 +46,8 @@ export default function TerrainSketch() {
 			windowResized={p5 => {
 				p5.resizeCanvas(ref.clientWidth, ref.clientHeight)
 				p5.background(0)
+				spacing.x = p5.width / (cols + 1)
+				spacing.y = p5.height / (rows + 1)
 			}}
 		/>
 	)
