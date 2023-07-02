@@ -1,6 +1,7 @@
 "use client"
 
 import Sketch from "react-p5"
+import { basicSetup, basicWindowResize } from "../../utils"
 
 export default function DensitySketch() {
 	let ref: Element
@@ -13,8 +14,7 @@ export default function DensitySketch() {
 		<Sketch
 			setup={(p5, canvasParent) => {
 				ref = canvasParent
-				ref.classList.add("w-full", "h-full")
-				p5.createCanvas(ref.clientWidth, ref.clientHeight).parent(ref)
+				basicSetup(p5, canvasParent)
 
 				width = p5.width / bins.length
 				scale = 1 / 0.0025
@@ -38,7 +38,7 @@ export default function DensitySketch() {
 			}}
 
 			windowResized={p5 => {
-				p5.resizeCanvas(ref.clientWidth, ref.clientHeight)
+				basicWindowResize(p5, ref)
 			}}
 		/>
 	)

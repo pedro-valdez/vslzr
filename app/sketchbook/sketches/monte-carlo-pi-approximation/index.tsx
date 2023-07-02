@@ -1,6 +1,7 @@
 "use client"
 
 import Sketch from "react-p5";
+import { basicSetup, basicWindowResize } from "../../utils";
 
 export default function MonteCarlosPiApproximationSketch() {
 	let ref: Element
@@ -18,11 +19,7 @@ export default function MonteCarlosPiApproximationSketch() {
 		<Sketch
 			setup={(p5, canvasParent) => {
 				ref = canvasParent
-				ref.classList.add("w-full", "h-full")
-				p5.createCanvas(ref.clientWidth, ref.clientHeight).parent(ref)
-
-				p5.background(0)
-				p5.stroke(255)
+				basicSetup(p5, canvasParent)
 				p5.fill(0)
 				p5.textAlign(p5.LEFT, p5.TOP)
 				p5.textSize(16)
@@ -54,8 +51,7 @@ export default function MonteCarlosPiApproximationSketch() {
 			}}
 
 			windowResized={p5 => {
-				p5.resizeCanvas(ref.clientWidth, ref.clientHeight)
-				p5.background(0)
+				basicWindowResize(p5, ref)
 				side = p5.height * 0.8
 				halfSide = side / 2
 				center.x = p5.width / 2
