@@ -8,7 +8,7 @@ export function basicSetup(p5: p5Types, ref: Element) {
 	p5.background(0)
 	p5.stroke(255)
 	p5.strokeWeight(2)
-	p5.fill(0)
+	p5.noFill()
 	p5.textAlign(p5.LEFT, p5.TOP)
 	p5.textSize(16)
 }
