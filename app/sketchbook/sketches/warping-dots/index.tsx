@@ -18,7 +18,6 @@ export default function TerrainSketch() {
 			setup={(p5, canvasParent) => {
 				ref = canvasParent
 				basicSetup(p5, canvasParent)
-				p5.strokeWeight(4)
 
 				spacing.x = p5.width / (cols + 1)
 				spacing.y = p5.height / (rows + 1)

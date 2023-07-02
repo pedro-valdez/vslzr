@@ -20,9 +20,6 @@ export default function MonteCarlosPiApproximationSketch() {
 			setup={(p5, canvasParent) => {
 				ref = canvasParent
 				basicSetup(p5, canvasParent)
-				p5.fill(0)
-				p5.textAlign(p5.LEFT, p5.TOP)
-				p5.textSize(16)
 
 				side = p5.height * 0.8
 				halfSide = side / 2
