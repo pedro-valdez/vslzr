@@ -25,7 +25,7 @@ export default async function SketchbookAllPage() {
 
 	return (
 		<main>
-			<div className="sm:px-8 md:px-16 lg:max-w-prose lg:mx-auto xl:max-w-screen-lg">
+			<div className="sm:px-8 md:px-16 lg:max-w-prose lg:mx-auto xl:max-w-screen-xl">
 				<header className="prose px-4 py-8 sm:px-0">
 					<h1 className="mb-[0.4444444em]">All Sketches</h1>
 					<p>Look at my works ye mighty and despair!</p>
@@ -47,10 +47,13 @@ export default async function SketchbookAllPage() {
 								<div className="card-body xl:w-1/2">
 									<h1 className="card-title">{ art.meta.title }</h1>
 									<p>{ art.meta.description }</p>
-									<div className="card-actions justify-end">
+									<div className="card-actions justify-end mt-4">
 										<Link
-											href={`/sketchbook/conways-game-of-life`}
-										/>
+											href={`/sketchbook/${art.slug}`}
+											className="btn normal-case"
+										>
+											View sketch
+										</Link>
 									</div>
 								</div>
 							</article>
