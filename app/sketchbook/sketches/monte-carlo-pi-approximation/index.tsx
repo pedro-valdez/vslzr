@@ -20,6 +20,7 @@ export default function MonteCarlosPiApproximationSketch() {
 			setup={(p5, canvasParent) => {
 				ref = canvasParent
 				basicSetup(p5, canvasParent)
+				p5.fill(0)
 
 				side = p5.height * 0.8
 				halfSide = side / 2
