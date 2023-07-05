@@ -12,15 +12,6 @@ export default async function SketchbookAllPage() {
 	 * statically typed? But that doesn't quite make sense
 	 * because I am interploating by name.
 	*/
-	const articleImports = sketchNames.map(name => (
-		import(`app/sketchbook/sketches/${name}/article.mdx`)
-		.then(mod => mod.meta)
-	))
-	const metas = await Promise.all(articleImports)
-	const articles = metas.map((meta, index) => ({
-		meta,
-		slug: sketchNames[index],
-	}))
 
 	return (
 		<main>
@@ -30,7 +21,7 @@ export default async function SketchbookAllPage() {
 					<p>Look at my works ye mighty and despair!</p>
 				</header>
 
-				<ArticlesDisplay articles={articles}/>
+				<ArticlesDisplay names={sketchNames}/>
 			</div>
 		</main>
 	)

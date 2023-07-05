@@ -11,10 +11,20 @@ type ArticleMeta = {
 }
 
 type ArticlesDisplayProps = {
-	articles: ArticleMeta[],
+	names: string[],
 }
 
-export default function ArticlesDisplay({ articles }: ArticlesDisplayProps) {
+export default async function ArticlesDisplay({ names }: ArticlesDisplayProps) {
+	const articleImports = names.map(name => (
+		import(`app/sketchbook/sketches/${name}/article.mdx`)
+		.then(mod => mod.meta)
+	))
+	const metas = await Promise.all(articleImports)
+	const articles = metas.map((meta, index) => ({
+		meta,
+		slug: names[index],
+	}))
+
 	return (
 		<div className="space-y-8 xl:space-y-32">
 			{
