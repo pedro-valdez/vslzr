@@ -1,29 +1,13 @@
 import Image from "next/image"
 import Link from "next/link"
-
-type ArticleMeta = {
-	slug: string,
-	meta: {
-		title: string,
-		date: string,
-		description: string,
-	},
-}
+import { Slug, getArticleMetas } from "./utils/fs"
 
 type ShelfProps = {
-	names: string[],
+	slugs: Slug[],
 }
 
-export default async function Shelf({ names }: ShelfProps) {
-	const articleImports = names.map(name => (
-		import(`app/sketchbook/sketches/${name}/article.mdx`)
-		.then(mod => mod.meta)
-	))
-	const metas = await Promise.all(articleImports)
-	const articles = metas.map((meta, index) => ({
-		meta,
-		slug: names[index],
-	}))
+export default async function Shelf({ slugs }: ShelfProps) {
+	const articles = await getArticleMetas(slugs)
 
 	return (
 		<div className="space-y-8 xl:space-y-32">

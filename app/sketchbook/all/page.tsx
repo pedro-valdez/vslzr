@@ -1,17 +1,8 @@
-import { readdir } from "fs/promises"
 import Shelf from "../Shelf"
+import { getSketchSlugs } from "../utils/fs"
 
 export default async function SketchbookAllPage() {
-	const sketchesPath = "app/sketchbook/sketches"
-	const sketchNames = await readdir(sketchesPath)
-	/*
-	 * NOTE:
-	 * For some reason interpolating sketchesPath in the
-	 * string template doesn't work.
-	 * I think it has something to do with the path not being
-	 * statically typed? But that doesn't quite make sense
-	 * because I am interploating by name.
-	*/
+	const sketchNames = await getSketchSlugs()
 
 	return (
 		<main>
@@ -21,7 +12,7 @@ export default async function SketchbookAllPage() {
 					<p>Look at my works ye mighty and despair!</p>
 				</header>
 
-				<Shelf names={sketchNames}/>
+				<Shelf slugs={sketchNames}/>
 			</div>
 		</main>
 	)
