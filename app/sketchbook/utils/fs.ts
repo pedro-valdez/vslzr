@@ -1,3 +1,4 @@
+import dayjs from "dayjs"
 import { readdir } from "fs/promises"
 
 export type Slug = string
@@ -20,4 +21,21 @@ export async function getArticleMetas(slugs: Slug[]) {
 	}))
 
 	return articles
+}
+
+export async function getLatestSlugs() {
+	const slugs = await getSketchSlugs()
+	const metas = await getArticleMetas(slugs)
+	metas.sort((a, b) => {
+		const dateA = dayjs(a.meta.date)
+		const dateB = dayjs(b.meta.date)
+
+		if (dateA.isSame(dateB)) { return 0 }
+		return dateA.isAfter(dateB) ? -1 : 1
+	})
+	const latestSlugs = metas
+		.map(meta => meta.slug)
+		.slice(0, 5)
+
+	return latestSlugs
 }
