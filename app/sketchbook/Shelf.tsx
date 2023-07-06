@@ -10,11 +10,11 @@ type ArticleMeta = {
 	},
 }
 
-type ArticlesDisplayProps = {
+type ShelfProps = {
 	names: string[],
 }
 
-export default async function ArticlesDisplay({ names }: ArticlesDisplayProps) {
+export default async function Shelf({ names }: ShelfProps) {
 	const articleImports = names.map(name => (
 		import(`app/sketchbook/sketches/${name}/article.mdx`)
 		.then(mod => mod.meta)

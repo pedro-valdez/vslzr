@@ -1,5 +1,5 @@
 import { readdir } from "fs/promises"
-import ArticlesDisplay from "../SketchesDisplay"
+import Shelf from "../Shelf"
 
 export default async function SketchbookAllPage() {
 	const sketchesPath = "app/sketchbook/sketches"
@@ -21,7 +21,7 @@ export default async function SketchbookAllPage() {
 					<p>Look at my works ye mighty and despair!</p>
 				</header>
 
-				<ArticlesDisplay names={sketchNames}/>
+				<Shelf names={sketchNames}/>
 			</div>
 		</main>
 	)
