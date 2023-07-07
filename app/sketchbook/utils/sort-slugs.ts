@@ -9,7 +9,6 @@ async function main() {
 	const json = JSON.stringify(sortedSlugs)
 
 	await writeFile("app/sketchbook/utils/sorted-slugs.json", json)
-	console.log("here")
 }
 
 main()
