@@ -1,3 +1,5 @@
+import Footer from './Footer'
+import Navbar from './Navbar'
 import './globals.css'
 import { Inter } from 'next/font/google'
 
@@ -14,8 +16,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" date-theme="black">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" date-theme="forest">
+      <body className={inter.className}>
+				<Navbar />
+				{children}
+				<Footer />
+			</body>
     </html>
   )
 }
