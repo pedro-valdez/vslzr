@@ -51,3 +51,10 @@ export async function getLatestSlugs(): Promise<Slug[]> {
 
 	return latestSlugs
 }
+
+export async function getLatestArticleMetas(): Promise<ArticleMeta[]> {
+	const latestSlugs = await getLatestSlugs()
+	const latestMetas = await getArticleMetas(latestSlugs)
+
+	return latestMetas
+}
