@@ -8,11 +8,11 @@ export default function Footer() {
 					<Link href="/about">
 						About
 					</Link>
-					<Link href="/sketchbook/all">
-						Sketches
-					</Link>
 					<Link href="/">
 						VSLZR
+					</Link>
+					<Link href="/sketchbook/all">
+						Sketches
 					</Link>
 				</div>
 				<p className="mt-4">© 2023 Pedro Valdez</p>
