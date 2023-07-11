@@ -58,3 +58,11 @@ export async function getLatestArticleMetas(): Promise<ArticleMeta[]> {
 
 	return latestMetas
 }
+
+export async function getAllArticleMetas(): Promise<ArticleMeta[]> {
+	const allSlugs = await getSketchSlugs()
+	const allMetas = await getArticleMetas(allSlugs)
+	allMetas.sort((a, b) => sortByDate(a.meta.date, b.meta.date))
+
+	return allMetas
+}

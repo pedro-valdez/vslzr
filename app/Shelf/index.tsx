@@ -4,12 +4,17 @@ import Separator from "./Separator"
 
 type ShelfProps = {
 	articles: ArticleMeta[],
+	showImages?: boolean,
 }
 
-export default function Shelf({ articles }: ShelfProps) {
+export default function Shelf({ articles, showImages }: ShelfProps) {
 	return (
 		<Separator>
-			{ articles.map(article => ( <ShelfItem article={article}/> )) }
+			{ articles.map(article => ( <ShelfItem article={article} isImage={showImages}/> )) }
 		</Separator>
 	)
+}
+
+Shelf.defaultProps = {
+	showImages: false,
 }
