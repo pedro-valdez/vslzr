@@ -10,7 +10,7 @@ export default async function Home() {
 		<main>
 			<h1 className="sr-only">VSLZR</h1>
 
-			<div className="px-4">
+			<div className="px-4 mx-auto max-w-2xl">
 				<div className="space-y-24">
 					<section>
 						<h2 className="sr-only">Featured</h2>

@@ -7,9 +7,10 @@ import { makeHumanDate } from "../sketchbook/utils/time"
 type ShelfItemProps = {
 	article: ArticleMeta,
 	isImage?: boolean,
+	isFeatured?: boolean,
 }
 
-export default function ShelfItem({ article, isImage }: ShelfItemProps) {
+export default function ShelfItem({ article, isImage, isFeatured }: ShelfItemProps) {
 	return (
 		<div>
 			<Link href={`/sketchbook/${article.slug}`}>
@@ -34,8 +35,14 @@ export default function ShelfItem({ article, isImage }: ShelfItemProps) {
 						>
 							{makeHumanDate(article.meta.date)}
 						</time>
-						<h3 className="card-title text-primary group-hover:text-primary-focus">
-							{article.meta.title}
+						<h3 className="card-title text-primary group-hover:text-primary-focus block">
+							<span className="align-middle">{article.meta.title}</span>
+							{ " " }
+							{
+								isFeatured ? (
+									<span className="badge badge-secondary">Featured</span>
+								) : <></>
+							}
 						</h3>
 						<p>{article.meta.description}</p>
 
@@ -56,4 +63,5 @@ export default function ShelfItem({ article, isImage }: ShelfItemProps) {
 
 ShelfItem.defaultProps = {
 	isImage: false,
+	isFeatured: false,
 }

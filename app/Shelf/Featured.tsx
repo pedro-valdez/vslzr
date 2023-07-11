@@ -12,10 +12,11 @@ export default function FeaturedShelf({ features } : FeaturedShelfProps) {
 			<ShelfItem
 				article={features[0]}
 				isImage
+				isFeatured
 			/>
 			{
 				features.slice(1, features.length).map(feature => (
-					<ShelfItem article={feature}/>
+					<ShelfItem article={feature} isFeatured/>
 				))
 			}
 		</Separator>
