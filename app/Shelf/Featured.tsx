@@ -15,8 +15,12 @@ export default function FeaturedShelf({ features } : FeaturedShelfProps) {
 				isFeatured
 			/>
 			{
-				features.slice(1, features.length).map(feature => (
-					<ShelfItem article={feature} isFeatured/>
+				features.slice(1, features.length).map((feature, index) => (
+					<ShelfItem
+						article={feature}
+						isFeatured
+						key={index}
+					/>
 				))
 			}
 		</Separator>

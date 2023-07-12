@@ -10,7 +10,13 @@ type ShelfProps = {
 export default function Shelf({ articles, showImages }: ShelfProps) {
 	return (
 		<Separator>
-			{ articles.map(article => ( <ShelfItem article={article} isImage={showImages}/> )) }
+			{ articles.map((article, index) => (
+				<ShelfItem
+					article={article}
+					isImage={showImages}
+					key={index}
+				/>
+			)) }
 		</Separator>
 	)
 }
