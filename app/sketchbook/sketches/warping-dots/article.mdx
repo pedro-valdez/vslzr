@@ -6,3 +6,11 @@ export const meta = {
 
 # { meta.title }
 { meta.description }
+
+I was watching a [YouTube video about creative coding](https://www.youtube.com/watch?v=UsIF5r8rAvk) where they showcased a [sketch](https://youtu.be/UsIF5r8rAvk?t=172) similar to the one above. The video provided the code, however when I tried running the sketch it wouldn't work, so I decided to code it myself.
+
+Recreating this is fairly simple. You just need a grid of uniformly distributed dots, or whatever you want, then you need to offset each dot by some random value. p5.js provides a Perlin Noise function which is what I used as the "random" value generator.
+
+Perlin noise generates pseudorandom values which are not too different. It is kind of like a mountain. If you pick two positions in a mountain that are close to each other then there wouldn't be much difference in height between them. However, if you pick two positions which are far apart then their difference is not predictable. In other words, in perlin space two values close to each other are somewhat similar, but values far from each other are unpredictably different.
+
+To generate the random values I passed each dot's column and row indices as the first two arguments to the perlin noise function, and the frame count is passed as the final argument. Just like that you generate the wave like pattern.
