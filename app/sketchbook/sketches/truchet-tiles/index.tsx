@@ -1,6 +1,6 @@
 "use client"
 import Sketch from "react-p5";
-import { basicSetup, basicWindowResize } from "../../utils";
+import { basicSetup, basicWindowResize, getControlContainer } from "../../utils";
 import makeTiles, { Truchet } from "./tiles";
 import p5Types from "p5"
 
@@ -20,8 +20,18 @@ export default function TruchetTilesSketch() {
 				canvasParent = ref
 				basicSetup(p5, canvasParent)
 
+				// Element creation
+				const sel: any = p5.createSelect()
+				sel.option("Triangles", "triangles")
+				sel.option("Quarter Circles", "quarterCircles")
+				sel.option("Ten Print", "tenPrint")
+				sel.selected("quarterCircles")
+				sel.changed(() => { tiling = tiles[sel.value() as "triangles" | "quarterCircles" | "tenPrint"] })
+				sel.class("select select-bordered select-sm")
+				sel.parent(getControlContainer())
+
 				tiles = makeTiles(p5)
-				tiling = tiles.quarterCircles
+				tiling = tiles[sel.value() as "triangles" | "quarterCircles" | "tenPrint"]
 
 				cols = p5.ceil(p5.width / scale)
 				rows = p5.ceil(p5.height / scale)

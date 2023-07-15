@@ -21,3 +21,7 @@ export function applyDefaults(p5: p5Types) {
 	p5.textAlign(p5.LEFT, p5.TOP)
 	p5.textSize(16)
 }
+
+export function getControlContainer() {
+	return document.getElementById("sketch-controls")
+}
