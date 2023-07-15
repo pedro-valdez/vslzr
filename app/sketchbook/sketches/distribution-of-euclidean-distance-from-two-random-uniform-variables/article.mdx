@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 export const meta = {
 	date: "2023-07-01",
 	description: "Take a look at how the Euclidean distance of two random uniform variables is distributed.",
@@ -6,3 +8,9 @@ export const meta = {
 
 # { meta.title }
 { meta.description }
+
+The <Link href="/sketchbook/monte-carlo-pi-approximation">Monte Carlo Pi Approximation</Link> sketch inspired this sketch.
+
+The monte carlo pi approximation generates a random point from two uniformly distributed random variables, and then computes the distance from the origin. I wondered how the distribution of such method looked like, so I made this sketch.
+
+[This stack exchange answer](https://math.stackexchange.com/questions/3311052/euclidean-distance-of-two-uniform-random-variables) provides a nice graph of the distribution.
