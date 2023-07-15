@@ -6,3 +6,9 @@ export const meta = {
 
 # { meta.title }
 { meta.description }
+
+I believe I first saw this method of approximation in a [3Blue1Brown](https://www.youtube.com/@3blue1brown) video. And I finally decided to code it.
+
+Imagine you have a square board with a centered circle of the same diameter as the width of the board. You throw a dart at the board, and keep track of the amount of darts thrown, as well as the amount that land inside the cirlce. If you divide the amount of darts that landed inside the circle by the amount of darts thrown, then you'd get a pi approximation.
+
+An exceedingly bad and slow approximation. I let the sketch run for about 10 minutes, and it still was only correct up to one decimal point. I thought there might be something wrong with my code, so I looked over it again, but everything seemed alright. I decided to look it up, and apparently the rate of convergence is very slow; unfortunately I can't find the stack overflow answer making such claims. Though, from what I remember the answer said that it took either one or ten billion iterations to have an approximation accurate to two decimal places.
